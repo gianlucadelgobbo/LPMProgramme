@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="net.liveperformersmeeting.m" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>LPM</name>
+    <description>
+        LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.
+
+The app include also a detailed map of the venue.
+
+LPM Programme allows you to be fully informed on all the activities scheduled during the Meeting 
+You can access to the detailed program:
+- by Day
+- by Artists name
+- by Twitter updates
+- by a Now function that shows you the activities from15 minutes prior the query to the following 2 hours
+
+The app include also a detailed map of the venue.
+
+Live Performers Meeting
+XVII edition 
+May 12 - 14, 2016
+Tolhuistuin
+Amsterdam
+
+http://liveperformersmeeting.net
+
+    </description>
+    <author email="g.delgobbo@flyer.it" href="http://flyer.it">
+         Gianluca Del Gobbo | Flyer communication
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <preference name="SplashScreen" value="/images/browser/splashscreen.jpg" />
+    <preference name="SplashScreenDelay" value="3000" />
+    <preference name="SplashScreenBackgroundColor" value="green" />
+    <preference name="ShowSplashScreen" value="false" />
+    <preference name="SplashScreenWidth" value="600" />
+    <preference name="SplashScreenHeight" value="300" />
+</widget>

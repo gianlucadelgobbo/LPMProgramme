@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget id="net.liveperformersmeeting.m" version="0.0.1" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+    <name>LPM</name>
+    <description>
+        LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.
+
+The app include also a detailed map of the venue.
+
+LPM Programme allows you to be fully informed on all the activities scheduled during the Meeting 
+You can access to the detailed program:
+- by Day
+- by Artists name
+- by Twitter updates
+- by a Now function that shows you the activities from15 minutes prior the query to the following 2 hours
+
+The app include also a detailed map of the venue.
+
+Live Performers Meeting
+XVII edition 
+May 12 - 14, 2016
+Tolhuistuin
+Amsterdam
+
+http://liveperformersmeeting.net
+
+    </description>
+    <author email="g.delgobbo@flyer.it" href="http://flyer.it">
+         Gianluca Del Gobbo | Flyer communication
+    </author>
+    <content src="index.html" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
+    <access origin="*" />
+    <allow-intent href="http://*/*" />
+    <allow-intent href="https://*/*" />
+    <allow-intent href="tel:*" />
+    <allow-intent href="sms:*" />
+    <allow-intent href="mailto:*" />
+    <allow-intent href="geo:*" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <engine name="ios" spec="~4.1.1" />
+    <engine name="android" spec="~5.1.1" />
+    <engine name="browser" spec="~4.1.0" />
+	<platform name="android">
+        <!--
+            ldpi    : 36x36 px
+            mdpi    : 48x48 px
+            hdpi    : 72x72 px
+            xhdpi   : 96x96 px
+            xxhdpi  : 144x144 px
+            xxxhdpi : 192x192 px
+        -->
+        <icon src="res/android/ldpi.png" density="ldpi" />
+        <icon src="res/android/mdpi.png" density="mdpi" />
+        <icon src="res/android/hdpi.png" density="hdpi" />
+        <icon src="res/android/xhdpi.png" density="xhdpi" />
+        <icon src="res/android/xxhdpi.png" density="xxhdpi" />
+        <icon src="res/android/xxxhdpi.png" density="xxxhdpi" />
+        
+	    <!-- you can use any density that exists in the Android project -->
+	    <splash src="res/android/splash-land-hdpi.png" density="land-hdpi"/>
+	    <splash src="res/android/splash-land-ldpi.png" density="land-ldpi"/>
+	    <splash src="res/android/splash-land-mdpi.png" density="land-mdpi"/>
+	    <splash src="res/android/splash-land-xhdpi.png" density="land-xhdpi"/>
+	
+	    <splash src="res/android/splash-port-hdpi.png" density="port-hdpi"/>
+	    <splash src="res/android/splash-port-ldpi.png" density="port-ldpi"/>
+	    <splash src="res/android/splash-port-mdpi.png" density="port-mdpi"/>
+	    <splash src="res/android/splash-port-xhdpi.png" density="port-xhdpi"/>
+	</platform>
+	
+	<platform name="ios">
+		<!-- iOS 8.0+ -->
+        <!-- iPhone 6 Plus  -->
+        <icon src="res/ios/icon-60@3x.png" width="180" height="180" />
+        <!-- iOS 7.0+ -->
+        <!-- iPhone / iPod Touch  -->
+        <icon src="res/ios/icon-60.png" width="60" height="60" />
+        <icon src="res/ios/icon-60@2x.png" width="120" height="120" />
+        <!-- iPad -->
+        <icon src="res/ios/icon-76.png" width="76" height="76" />
+        <icon src="res/ios/icon-76@2x.png" width="152" height="152" />
+        <!-- iOS 6.1 -->
+        <!-- Spotlight Icon -->
+        <icon src="res/ios/icon-40.png" width="40" height="40" />
+        <icon src="res/ios/icon-40@2x.png" width="80" height="80" />
+        <!-- iPhone / iPod Touch -->
+        <icon src="res/ios/icon.png" width="57" height="57" />
+        <icon src="res/ios/icon@2x.png" width="114" height="114" />
+        <!-- iPad -->
+        <icon src="res/ios/icon-72.png" width="72" height="72" />
+        <icon src="res/ios/icon-72@2x.png" width="144" height="144" />
+        <!-- iPhone Spotlight and Settings Icon -->
+        <icon src="res/ios/icon-small.png" width="29" height="29" />
+        <icon src="res/ios/icon-small@2x.png" width="58" height="58" />
+        <icon src="res/ios/icon-small@3x.png" width="87" height="87" />
+        <!-- iPad Spotlight and Settings Icon -->
+        <icon src="res/ios/icon-50.png" width="50" height="50" />
+        <icon src="res/ios/icon-50@2x.png" width="100" height="100" />
+        
+        <!-- iPad App -->
+        <icon src="res/ios/icon-83.5@2x.png" width="167" height="167" />
+        
+	    <!-- images are determined by width and height. The following are supported -->
+	    <splash src="res/ios/Default~iphone.png" width="320" height="480"/>
+	    <splash src="res/ios/Default@2x~iphone.png" width="640" height="960"/>
+	    <splash src="res/ios/Default-Portrait~ipad.png" width="768" height="1024"/>
+	    <splash src="res/ios/Default-Portrait@2x~ipad.png" width="1536" height="2048"/>
+	    <splash src="res/ios/Default-Landscape~ipad.png" width="1024" height="768"/>
+	    <splash src="res/ios/Default-Landscape@2x~ipad.png" width="2048" height="1536"/>
+	    <splash src="res/ios/Default-568h@2x~iphone.png" width="640" height="1136"/>
+	    <splash src="res/ios/Default-667h.png" width="750" height="1334"/>
+	    <splash src="res/ios/Default-736h.png" width="1242" height="2208"/>
+	    <splash src="res/ios/Default-Landscape-736h.png" width="2208" height="1242"/>
+	</platform>
+	
+	<platform name="windows">
+        <icon src="res/windows/storelogo.png" target="StoreLogo" />
+        <icon src="res/windows/smalllogo.png" target="Square30x30Logo" />
+        <icon src="res/Windows/Square44x44Logo.png" target="Square44x44Logo" />
+        <icon src="res/Windows/Square70x70Logo.png" target="Square70x70Logo" />
+        <icon src="res/Windows/Square71x71Logo.png" target="Square71x71Logo" />
+        <icon src="res/Windows/Square150x150Logo.png" target="Square150x150Logo" />
+        <icon src="res/Windows/Square310x310Logo.png" target="Square310x310Logo" />
+        <icon src="res/Windows/Wide310x150Logo.png" target="Wide310x150Logo" />
+
+	    <!-- images are determined by width and height. The following are supported -->
+	    <splash src="res/windows/splashscreen.png" width="620" height="300"/>
+	    <splash src="res/windows/splashscreenphone.png" width="1152" height="1920"/>
+	</platform>
+	<platform name="browser">
+	    <preference name="SplashScreen" value="/images/browser/splashscreen.jpg" /> <!-- defaults to "/img/logo.png" -->
+	    <preference name="SplashScreenDelay" value="3000" /> <!-- defaults to "3000" -->
+	    <preference name="SplashScreenBackgroundColor" value="green" /> <!-- defaults to "#464646" -->
+	    <preference name="ShowSplashScreen" value="false" /> <!-- defaults to "true" -->
+	    <preference name="SplashScreenWidth" value="600" /> <!-- defaults to "170" -->
+	    <preference name="SplashScreenHeight" value="300" /> <!-- defaults to "200" -->
+	</platform>
+</widget>

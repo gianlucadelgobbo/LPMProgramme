@@ -1,0 +1,99 @@
+.icon-left:before {
+  content: '\e822';
+}
+.icon-location:before {
+    content: "\e900";
+}
+.icon-location2:before {
+    content: "\e901";
+}
+.icon-compass:before {
+    content: "\e902";
+}
+.icon-map:before {
+    content: "\e903";
+}
+.icon-map2:before {
+    content: "\e904";
+}
+.icon-podcast:before {
+    content: "\e905";
+}
+.icon-feed:before {
+    content: "\e906";
+}
+.icon-user:before {
+    content: "\e907";
+}
+.icon-users:before {
+    content: "\e908";
+}
+.icon-sphere:before {
+    content: "\e909";
+}
+.icon-earth:before {
+    content: "\e90a";
+}
+.icon-link:before {
+    content: "\e90b";
+}
+
+
+
+
+
+.panzoomcnt{
+	height:100%;
+	width:100%;
+}
+.panzoom{
+	text-align: center;
+}
+.buttons{
+	position: absolute;
+	z-index: 2;
+	background-color: #FFF;
+}
+.content>.table-view:first-child {
+    margin-top: -1px;
+}
+.table-view-cell.twitter-feed {
+    padding: 11px;
+}
+.img-responsive {
+    max-width: 100%;
+}
+.table-view-cell small{
+	white-space: nowrap;
+    font-weight: normal;
+}
+.icon-small {
+	font-size: 15px;
+}
+.superscript {
+	display: block;
+    margin-bottom: 5px;
+    font-size: 14px;
+}
+.subscript {
+    font-size: 14px;
+	display: block;
+}
+.table-view-cell .title-list{
+	margin-top: 5px;
+    margin-bottom: 5px;
+    line-height: 1;
+}
+.table-view-cell>a:not(.btn){
+	margin: -11px -45px -11px -15px;
+}
+.table-view-cell {
+	padding: 11px 45px 11px 15px;
+}
+.badge {
+    padding: 4px 9px 3px;
+    border-radius: 4px;
+}
+.table-view:last-child {
+    padding-bottom: 50px;
+}
