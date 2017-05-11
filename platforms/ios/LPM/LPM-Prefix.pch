@@ -17,7 +17,7 @@
  under the License.
  */
 //
-// Prefix header for all source files of the 'LPMProgramme' target in the 'LPMProgramme' project
+// Prefix header for all source files of the 'LPM' target in the 'LPM' project
 //
 
 #ifdef __OBJC__

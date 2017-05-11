@@ -80,7 +80,7 @@ var app = {
 
 		// check if something was found
 		if (app.dataCnt === null || app.dataCnt === "null") {
-			var remoteFileURL = app.networkState == 'No network connection' ? "data/data.json" : "https://flxer.net/api/lpm-team/events/lpm-2016-amsterdam/";
+			var remoteFileURL = app.networkState == 'No network connection' ? "data/data.json" : "https://flxer.net/api/lpm-team/events/lpm-2017-amsterdam/";
 			// nope - file doesn't exist, so fetch it remotely (synchronously)
 			var remoteFile = fetchRemoteFile(remoteFileURL, startup);
 

@@ -181,11 +181,15 @@ function loadArtistsList(){
 			}
 		}
 	}
-	artists.sort(sortAZ);
+	var artistsDef = [];
+	for (artist in artists) {
+		artistsDef.push(artists[artist]);
+	}
+	artistsDef.sort(sortAZ);
 	var content = "<ul class=\"table-view\">";
 	content+= "<li class=\"table-view-cell table-view-divider\">A - Z</li>";
-	for (artist in artists) {
-		content+= writeArtistListItem(artists[artist]);
+	for (artist in artistsDef) {
+		content+= writeArtistListItem(artistsDef[artist]);
 	}
 	content+= "</ul>";
 	$(".content").html(content);
@@ -405,8 +409,9 @@ function getSchedule(i,f){
 		str+= "				<p><span class=\"badge badge-primary\">"+ora_i+" > "+ora_f+"</span> "+formatDate(data_i, "notime")+"</p>";
 	} else {
 		for (var a=0;a<days;a++) {
-			data_i.setDate(data_i.getDate() + a);
-			str+= "				<p><span class=\"badge badge-primary\">"+ora_i+" > "+ora_f+"</span> "+formatDate(data_i, "notime")+"</p>";
+			var tmpDate = new Date();
+			tmpDate.setDate(data_i.getDate() + a);
+			str+= "				<p><span class=\"badge badge-primary\">"+ora_i+" > "+ora_f+"</span> "+formatDate(tmpDate, "notime")+"</p>";
 		}
 	}
 	return str;
@@ -439,14 +444,12 @@ function writePerfListItem(p){
 	return content;
 }
 function sortAZ(a, b) {
-	if (a.nomearte > b.nomearte) {
-	return 1;
-	}
-	if (a.nomearte < b.nomearte) {
-	return -1;
-	}
-	// a must be equal to b
-	return 0;
+ var nameA=a.nomearte.toLowerCase(), nameB=b.nomearte.toLowerCase();
+ if (nameA < nameB) //sort string ascending
+  return -1;
+ if (nameA > nameB)
+  return 1;
+ return 0; //default return value (no sorting)
 }
 function myBack(){
 	window[back[back.length-2].fnz](back[back.length-2].params);
