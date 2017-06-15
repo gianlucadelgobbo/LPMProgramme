@@ -63,6 +63,8 @@ http://liveperformersmeeting.net
     <allow-intent href="geo:*" />
     <allow-intent href="itms:*" />
     <allow-intent href="itms-apps:*" />
+    <resource-file src="targets/CustomData.xml" />
+    <resource-file src="targets/CustomData.dat" />
     <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
     <icon height="120" src="res/ios/icon-60@2x.png" width="120" />
     <icon height="76" src="res/ios/icon-76.png" width="76" />

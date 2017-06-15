@@ -30,6 +30,11 @@
                         }
                     ]
                 }
+            },
+            "*-Info.plist": {
+                "parents": {
+                    "NSCameraUsageDescription": []
+                }
             }
         }
     },
