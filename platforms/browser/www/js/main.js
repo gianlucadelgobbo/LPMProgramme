@@ -4,6 +4,7 @@ var startupSez = "loadDaysList";
 var scroll = [0,0];
 
 function startup (remoteFile) {
+    console.log("stocazzo");
 	app.dataCnt = remoteFile;
 	if (typeof dataName !== 'undefined') localStorage.setItem(dataName, remoteFile);
 	$("#loadTwitter").bind('click', btn0);
@@ -260,7 +261,7 @@ function loadNowList(){
 	content+= "<li class=\"table-view-cell table-view-divider\">"+formatDate(now, "full")+"</li>";
 	var lista = "";
 	for (perf in app.dataCnt.performances[day]) {
-		var perfTime = new Date(day+" "+app.dataCnt.performances[day][perf].data_i.split(" ")[1]);
+		var perfTime = new Date(day.split("-")[0],day.split("-")[1]-1,day.split("-")[2],app.dataCnt.performances[day][perf].data_i.split(" ")[1].split(":")[0],app.dataCnt.performances[day][perf].data_i.split(" ")[1].split(":")[1]);
 		if (perfTime-now > -900000 && perfTime-now < 7200000) {
 			lista+= writePerfListItem(app.dataCnt.performances[day][perf]);
 		}

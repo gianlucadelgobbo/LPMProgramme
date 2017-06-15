@@ -9,13 +9,15 @@
             "ios"
         ],
         "plugins": {
-            "cordova-plugin-whitelist": {}
+            "cordova-plugin-whitelist": {},
+            "cordova-plugin-statusbar": {}
         }
     },
     "dependencies": {
-        "cordova-android": "~5.1.1",
+        "cordova-android": "^6.2.3",
         "cordova-browser": "~4.1.0",
         "cordova-ios": "^4.4.0",
+        "cordova-plugin-statusbar": "^2.2.3",
         "cordova-plugin-whitelist": "1"
     }
 }

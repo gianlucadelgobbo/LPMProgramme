@@ -15,6 +15,9 @@
         },
         "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
     "dependent_plugins": {}

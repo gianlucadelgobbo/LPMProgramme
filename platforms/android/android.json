@@ -9,15 +9,19 @@
                 "parents": {
                     "/*": [
                         {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"NetworkStatus\"><param name=\"android-package\" value=\"org.apache.cordova.networkinformation.NetworkManager\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         }
                     ]
@@ -36,49 +40,65 @@
         }
     },
     "installed_plugins": {
-        "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "net.liveperformersmeeting.m"
-        },
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
         "cordova-plugin-splashscreen": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
     "dependent_plugins": {},
     "modules": [
         {
-            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-            "id": "cordova-plugin-whitelist.whitelist",
-            "runs": true
-        },
-        {
-            "file": "plugins/cordova-plugin-network-information/www/network.js",
             "id": "cordova-plugin-network-information.network",
+            "file": "plugins/cordova-plugin-network-information/www/network.js",
+            "pluginId": "cordova-plugin-network-information",
             "clobbers": [
                 "navigator.connection",
                 "navigator.network.connection"
             ]
         },
         {
-            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
             "id": "cordova-plugin-network-information.Connection",
+            "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+            "pluginId": "cordova-plugin-network-information",
             "clobbers": [
                 "Connection"
             ]
         },
         {
-            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
             "id": "cordova-plugin-splashscreen.SplashScreen",
+            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
+            "pluginId": "cordova-plugin-splashscreen",
             "clobbers": [
                 "navigator.splashscreen"
             ]
+        },
+        {
+            "id": "cordova-plugin-statusbar.statusbar",
+            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+            "pluginId": "cordova-plugin-statusbar",
+            "clobbers": [
+                "window.StatusBar"
+            ]
+        },
+        {
+            "id": "cordova-plugin-whitelist.whitelist",
+            "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+            "pluginId": "cordova-plugin-whitelist",
+            "runs": true
         }
     ],
     "plugin_metadata": {
-        "cordova-plugin-whitelist": "1.2.1",
         "cordova-plugin-network-information": "1.2.0",
-        "cordova-plugin-splashscreen": "3.2.1"
+        "cordova-plugin-splashscreen": "3.2.1",
+        "cordova-plugin-statusbar": "2.2.3",
+        "cordova-plugin-whitelist": "1.2.1"
     }
 }
