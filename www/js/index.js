@@ -20,6 +20,7 @@ var app = {
 	networkState: 'No network connection',
 	// Application Constructor
 	initialize: function() {
+        alert("ababab");
 		this.bindEvents();
 	},
 	// Bind Event Listeners
@@ -113,10 +114,3 @@ var app = {
 	}
 };
 app.initialize();
-alert("aaaa");
-
-ezar.initializeVideoOverlay(function(){ alert("bbbb");ezar.getBackCamera().start(); });
-
-
-
-

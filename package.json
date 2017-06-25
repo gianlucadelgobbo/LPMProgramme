@@ -10,14 +10,14 @@
         ],
         "plugins": {
             "cordova-plugin-whitelist": {},
-            "cordova-plugin-statusbar": {},
             "cordova-plugin-console": {},
             "cordova-plugin-customurlscheme": {
                 "URL_SCHEME": "lpm",
                 "ANDROID_SCHEME": " ",
                 "ANDROID_HOST": " ",
                 "ANDROID_PATHPREFIX": "/"
-            }
+            },
+            "cordova-plugin-network-information": {}
         }
     },
     "dependencies": {
@@ -26,7 +26,7 @@
         "cordova-ios": "^4.4.0",
         "cordova-plugin-console": "^1.0.7",
         "cordova-plugin-customurlscheme": "^4.3.0",
-        "cordova-plugin-statusbar": "^2.2.3",
-        "cordova-plugin-whitelist": "1"
+        "cordova-plugin-whitelist": "1",
+        "cordova-plugin-network-information": "~1.2.0"
     }
 }

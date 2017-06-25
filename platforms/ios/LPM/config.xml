@@ -1,60 +1,31 @@
 <?xml version='1.0' encoding='utf-8'?>
 <widget id="net.liveperformersmeeting.m" version="0.0.3" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
-    <feature name="LocalStorage">
-        <param name="ios-package" value="CDVLocalStorage" />
-    </feature>
-    <feature name="HandleOpenUrl">
-        <param name="ios-package" value="CDVHandleOpenURL" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="IntentAndNavigationFilter">
-        <param name="ios-package" value="CDVIntentAndNavigationFilter" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="GestureHandler">
-        <param name="ios-package" value="CDVGestureHandler" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="NetworkStatus">
-        <param name="ios-package" value="CDVConnection" />
-    </feature>
-    <feature name="SplashScreen">
-        <param name="ios-package" value="CDVSplashScreen" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="StatusBar">
-        <param name="ios-package" value="CDVStatusBar" />
-        <param name="onload" value="true" />
-    </feature>
-    <feature name="Console">
-        <param name="ios-package" value="CDVLogger" />
-    </feature>
     <name>LPM</name>
     <description>
         LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.
-
-The app include also a detailed map of the venue.
-
-LPM Programme allows you to be fully informed on all the activities scheduled during the Meeting 
-You can access to the detailed program:
-- by Day
-- by Artists name
-- by Twitter updates
-- by a Now function that shows you the activities from 15 minutes prior the query to the following 2 hours
-
-The app include also a detailed map of the venue.
-
-Live Performers Meeting
-XVIII edition
-May 18 - 21, 2017
-RADION
-Amsterdam
-
-http://liveperformersmeeting.net
-
+        
+        The app include also a detailed map of the venue.
+        
+        LPM Programme allows you to be fully informed on all the activities scheduled during the Meeting
+        You can access to the detailed program:
+        - by Day
+        - by Artists name
+        - by Twitter updates
+        - by a Now function that shows you the activities from 15 minutes prior the query to the following 2 hours
+        
+        The app include also a detailed map of the venue.
+        
+        Live Performers Meeting
+        XVIII edition
+        May 18 - 21, 2017
+        RADION
+        Amsterdam
+        
+        http://liveperformersmeeting.net
+        
     </description>
     <author email="g.delgobbo@flyer.it" href="http://flyer.it">
-         Gianluca Del Gobbo | Flyer communication
+        Gianluca Del Gobbo | Flyer communication
     </author>
     <content src="index.html" />
     <access origin="*" />
@@ -64,48 +35,93 @@ http://liveperformersmeeting.net
     <allow-intent href="sms:*" />
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
-    <allow-intent href="itms:*" />
-    <allow-intent href="itms-apps:*" />
-    <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
-    <icon height="120" src="res/ios/icon-60@2x.png" width="120" />
-    <icon height="76" src="res/ios/icon-76.png" width="76" />
-    <icon height="152" src="res/ios/icon-76@2x.png" width="152" />
-    <icon height="40" src="res/ios/icon-40.png" width="40" />
-    <icon height="80" src="res/ios/icon-40@2x.png" width="80" />
-    <icon height="57" src="res/ios/icon.png" width="57" />
-    <icon height="114" src="res/ios/icon@2x.png" width="114" />
-    <icon height="72" src="res/ios/icon-72.png" width="72" />
-    <icon height="144" src="res/ios/icon-72@2x.png" width="144" />
-    <icon height="29" src="res/ios/icon-small.png" width="29" />
-    <icon height="58" src="res/ios/icon-small@2x.png" width="58" />
-    <icon height="87" src="res/ios/icon-small@3x.png" width="87" />
-    <icon height="50" src="res/ios/icon-50.png" width="50" />
-    <icon height="100" src="res/ios/icon-50@2x.png" width="100" />
-    <icon height="167" src="res/ios/icon-83.5@2x.png" width="167" />
-    <splash height="480" src="res/ios/Default~iphone.png" width="320" />
-    <splash height="960" src="res/ios/Default@2x~iphone.png" width="640" />
-    <splash height="1024" src="res/ios/Default-Portrait~ipad.png" width="768" />
-    <splash height="2048" src="res/ios/Default-Portrait@2x~ipad.png" width="1536" />
-    <splash height="768" src="res/ios/Default-Landscape~ipad.png" width="1024" />
-    <splash height="1536" src="res/ios/Default-Landscape@2x~ipad.png" width="2048" />
-    <splash height="1136" src="res/ios/Default-568h@2x~iphone.png" width="640" />
-    <splash height="1334" src="res/ios/Default-667h.png" width="750" />
-    <splash height="2208" src="res/ios/Default-736h.png" width="1242" />
-    <splash height="1242" src="res/ios/Default-Landscape-736h.png" width="2208" />
-    <preference name="AllowInlineMediaPlayback" value="false" />
-    <preference name="BackupWebStorage" value="local" />
-    <preference name="DisallowOverscroll" value="false" />
-    <preference name="EnableViewportScale" value="false" />
-    <preference name="KeyboardDisplayRequiresUserAction" value="true" />
-    <preference name="MediaPlaybackRequiresUserAction" value="false" />
-    <preference name="SuppressesIncrementalRendering" value="false" />
-    <preference name="SuppressesLongPressGesture" value="false" />
-    <preference name="Suppresses3DTouchGesture" value="false" />
-    <preference name="GapBetweenPages" value="0" />
-    <preference name="PageLength" value="0" />
-    <preference name="PaginationBreakingMode" value="page" />
-    <preference name="PaginationMode" value="unpaginated" />
-    <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarStyle" value="lightcontent" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <platform name="android">
+        <allow-intent href="market:*" />
+    </platform>
+    <platform name="ios">
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+    </platform>
+    <feature name="StatusBar">
+        <param name="ios-package" onload="true" value="CDVStatusBar" />
+    </feature>
+    <platform name="android">
+        <icon density="ldpi" src="res/android/ldpi.png" />
+        <icon density="mdpi" src="res/android/mdpi.png" />
+        <icon density="hdpi" src="res/android/hdpi.png" />
+        <icon density="xhdpi" src="res/android/xhdpi.png" />
+        <icon density="xxhdpi" src="res/android/xxhdpi.png" />
+        <icon density="xxxhdpi" src="res/android/xxxhdpi.png" />
+        <splash density="land-hdpi" src="res/android/splash-land-hdpi.png" />
+        <splash density="land-ldpi" src="res/android/splash-land-ldpi.png" />
+        <splash density="land-mdpi" src="res/android/splash-land-mdpi.png" />
+        <splash density="land-xhdpi" src="res/android/splash-land-xhdpi.png" />
+        <splash density="port-hdpi" src="res/android/splash-port-hdpi.png" />
+        <splash density="port-ldpi" src="res/android/splash-port-ldpi.png" />
+        <splash density="port-mdpi" src="res/android/splash-port-mdpi.png" />
+        <splash density="port-xhdpi" src="res/android/splash-port-xhdpi.png" />
+    </platform>
+    <platform name="ios">
+        <icon height="180" src="res/ios/icon-60@3x.png" width="180" />
+        <icon height="120" src="res/ios/icon-60@2x.png" width="120" />
+        <icon height="76" src="res/ios/icon-76.png" width="76" />
+        <icon height="152" src="res/ios/icon-76@2x.png" width="152" />
+        <icon height="40" src="res/ios/icon-40.png" width="40" />
+        <icon height="80" src="res/ios/icon-40@2x.png" width="80" />
+        <icon height="57" src="res/ios/icon.png" width="57" />
+        <icon height="114" src="res/ios/icon@2x.png" width="114" />
+        <icon height="72" src="res/ios/icon-72.png" width="72" />
+        <icon height="144" src="res/ios/icon-72@2x.png" width="144" />
+        <icon height="29" src="res/ios/icon-small.png" width="29" />
+        <icon height="58" src="res/ios/icon-small@2x.png" width="58" />
+        <icon height="87" src="res/ios/icon-small@3x.png" width="87" />
+        <icon height="50" src="res/ios/icon-50.png" width="50" />
+        <icon height="100" src="res/ios/icon-50@2x.png" width="100" />
+        <icon height="167" src="res/ios/icon-83.5@2x.png" width="167" />
+        <splash height="480" src="res/ios/Default~iphone.png" width="320" />
+        <splash height="960" src="res/ios/Default@2x~iphone.png" width="640" />
+        <splash height="1024" src="res/ios/Default-Portrait~ipad.png" width="768" />
+        <splash height="2048" src="res/ios/Default-Portrait@2x~ipad.png" width="1536" />
+        <splash height="768" src="res/ios/Default-Landscape~ipad.png" width="1024" />
+        <splash height="1536" src="res/ios/Default-Landscape@2x~ipad.png" width="2048" />
+        <splash height="1136" src="res/ios/Default-568h@2x~iphone.png" width="640" />
+        <splash height="1334" src="res/ios/Default-667h.png" width="750" />
+        <splash height="2208" src="res/ios/Default-736h.png" width="1242" />
+        <splash height="1242" src="res/ios/Default-Landscape-736h.png" width="2208" />
+        <preference name="BackupWebStorage" value="local" />
+        <preference name="StatusBarBackgroundColor" value="#000000" />
+        <preference name="StatusBarOverlaysWebView" value="false" />
+    </platform>
+    <platform name="windows">
+        <icon src="res/windows/storelogo.png" target="StoreLogo" />
+        <icon src="res/windows/smalllogo.png" target="Square30x30Logo" />
+        <icon src="res/Windows/Square44x44Logo.png" target="Square44x44Logo" />
+        <icon src="res/Windows/Square70x70Logo.png" target="Square70x70Logo" />
+        <icon src="res/Windows/Square71x71Logo.png" target="Square71x71Logo" />
+        <icon src="res/Windows/Square150x150Logo.png" target="Square150x150Logo" />
+        <icon src="res/Windows/Square310x310Logo.png" target="Square310x310Logo" />
+        <icon src="res/Windows/Wide310x150Logo.png" target="Wide310x150Logo" />
+        <splash height="300" src="res/windows/splashscreen.png" width="620" />
+        <splash height="1920" src="res/windows/splashscreenphone.png" width="1152" />
+    </platform>
+    <platform name="browser">
+        <preference name="SplashScreen" value="/images/browser/splashscreen.jpg" />
+        <preference name="SplashScreenDelay" value="3000" />
+        <preference name="SplashScreenBackgroundColor" value="green" />
+        <preference name="ShowSplashScreen" value="false" />
+        <preference name="SplashScreenWidth" value="600" />
+        <preference name="SplashScreenHeight" value="300" />
+    </platform>
+    <engine name="android" spec="^6.2.3" />
+    <engine name="browser" spec="~4.1.0" />
+    <engine name="ios" spec="^4.4.0" />
+    <plugin name="cordova-plugin-console" spec="^1.0.7" />
+    <plugin name="cordova-plugin-customurlscheme" spec="^4.3.0">
+        <variable name="URL_SCHEME" value="lpm" />
+        <variable name="ANDROID_SCHEME" value=" " />
+        <variable name="ANDROID_HOST" value=" " />
+        <variable name="ANDROID_PATHPREFIX" value="/" />
+    </plugin>
+    <plugin name="cordova-plugin-network-information" spec="~1.2.0" />
+    <plugin name="cordova-plugin-whitelist" spec="1" />
 </widget>

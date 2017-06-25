@@ -21,6 +21,7 @@ var app = {
 	// Application Constructor
 	initialize: function() {
 		this.bindEvents();
+        alert("accccaaa");
 	},
 	// Bind Event Listeners
 	//
@@ -113,10 +114,3 @@ var app = {
 	}
 };
 app.initialize();
-alert("aaaa");
-
-ezar.initializeVideoOverlay(function(){ alert("bbbb");ezar.getBackCamera().start(); });
-
-
-
-

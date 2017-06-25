@@ -13,22 +13,6 @@
                             "count": 1
                         },
                         {
-                            "xml": "<feature name=\"SplashScreen\"><param name=\"ios-package\" value=\"CDVSplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"StatusBar\"><param name=\"ios-package\" value=\"CDVStatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"StatusBarOverlaysWebView\" value=\"true\" />",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
-                            "count": 1
-                        },
-                        {
                             "xml": "<feature name=\"Console\"><param name=\"ios-package\" value=\"CDVLogger\" /></feature>",
                             "count": 1
                         }
@@ -52,13 +36,7 @@
         "cordova-plugin-network-information": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
-        "cordova-plugin-splashscreen": {
-            "PACKAGE_NAME": "net.liveperformersmeeting.m"
-        },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "net.liveperformersmeeting.m"
-        },
-        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
         "cordova-plugin-console": {
@@ -89,22 +67,6 @@
             ]
         },
         {
-            "id": "cordova-plugin-splashscreen.SplashScreen",
-            "file": "plugins/cordova-plugin-splashscreen/www/splashscreen.js",
-            "pluginId": "cordova-plugin-splashscreen",
-            "clobbers": [
-                "navigator.splashscreen"
-            ]
-        },
-        {
-            "id": "cordova-plugin-statusbar.statusbar",
-            "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
-            "pluginId": "cordova-plugin-statusbar",
-            "clobbers": [
-                "window.StatusBar"
-            ]
-        },
-        {
             "id": "cordova-plugin-console.console",
             "file": "plugins/cordova-plugin-console/www/console-via-logger.js",
             "pluginId": "cordova-plugin-console",
@@ -131,9 +93,7 @@
     ],
     "plugin_metadata": {
         "cordova-plugin-network-information": "1.2.0",
-        "cordova-plugin-splashscreen": "3.2.1",
         "cordova-plugin-whitelist": "1.2.1",
-        "cordova-plugin-statusbar": "2.2.3",
         "cordova-plugin-console": "1.0.7",
         "cordova-plugin-customurlscheme": "4.3.0"
     }
