@@ -113,7 +113,9 @@ var app = {
 	}
 };
 app.initialize();
+alert("aaaa");
 
+ezar.initializeVideoOverlay(function(){ alert("bbbb");ezar.getBackCamera().start(); });
 
 
 

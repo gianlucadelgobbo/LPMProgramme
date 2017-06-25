@@ -18,6 +18,13 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "lpm",
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
     "dependent_plugins": {},
@@ -78,6 +85,8 @@
         "cordova-plugin-whitelist": "1.2.1",
         "cordova-plugin-network-information": "1.2.0",
         "cordova-plugin-splashscreen": "3.2.1",
-        "cordova-plugin-statusbar": "2.2.3"
+        "cordova-plugin-statusbar": "2.2.3",
+        "cordova-plugin-console": "1.0.7",
+        "cordova-plugin-customurlscheme": "4.3.0"
     }
 }

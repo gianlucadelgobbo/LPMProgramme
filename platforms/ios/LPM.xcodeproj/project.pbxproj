@@ -20,6 +20,7 @@
 		B263CB78E0F84DCF922844E5 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58772B2E55A84A2FAAE41AEE /* CoreTelephony.framework */; };
 		BAA044448C744CFCA2CBDDC8 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8B913EBCCE744AB2B1E176EE /* SystemConfiguration.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		DDC986A98C8F43DCAA3AAB1C /* CDVConnection.m in Sources */ = {isa = PBXBuildFile; fileRef = ED6ECFBF52AD453FA6890B35 /* CDVConnection.m */; };
+		74AF52BDB46C499092600FD4 /* CDVLogger.m in Sources */ = {isa = PBXBuildFile; fileRef = CD49CCD4B393410ABA535416 /* CDVLogger.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,6 +80,8 @@
 		F14E96B36FDF45D38305C48E /* CDVConnection.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVConnection.h; path = "cordova-plugin-network-information/CDVConnection.h"; sourceTree = "<group>"; };
 		F840E1F0165FE0F500CFE078 /* config.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = config.xml; path = LPM/config.xml; sourceTree = "<group>"; };
 		FDE0C21B77CA43E8AAD7C969 /* CDVSplashScreen.h */ = {isa = PBXFileReference; explicitFileType = undefined; fileEncoding = 4; includeInIndex = 0; lastKnownFileType = sourcecode.c.h; name = CDVSplashScreen.h; path = "cordova-plugin-splashscreen/CDVSplashScreen.h"; sourceTree = "<group>"; };
+		CD49CCD4B393410ABA535416 /* CDVLogger.m */ = {isa = PBXFileReference; name = "CDVLogger.m"; path = "cordova-plugin-console/CDVLogger.m"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; explicitFileType = undefined; includeInIndex = 0; };
+		8E00F5F6D9A040948DEAFFA1 /* CDVLogger.h */ = {isa = PBXFileReference; name = "CDVLogger.h"; path = "cordova-plugin-console/CDVLogger.h"; sourceTree = "<group>"; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; explicitFileType = undefined; includeInIndex = 0; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -197,6 +200,8 @@
 				A0CACE64E1854DDB81B24ED1 /* CDVViewController+SplashScreen.h */,
 				25B5401D8F734FFC927C8AA2 /* CDVStatusBar.m */,
 				D5DC7AB11D7541F5968B5495 /* CDVStatusBar.h */,
+				CD49CCD4B393410ABA535416 /* CDVLogger.m */,
+				8E00F5F6D9A040948DEAFFA1 /* CDVLogger.h */,
 			);
 			name = Plugins;
 			path = LPM/Plugins;
@@ -329,12 +334,7 @@
 				22CE68935B2A41B7BFE4E3CB /* CDVSplashScreen.m in Sources */,
 				1EF266679CD24EC8AB2AC3EC /* CDVViewController+SplashScreen.m in Sources */,
 				0CBCA1D21DA4463289F85B30 /* CDVStatusBar.m in Sources */,
-				FB827C5208F047DBA8B74D8F /* ViewController.mm in Sources */,
-				5D688E3BC7AC43688ED698B1 /* ImageTargetsEAGLView.mm in Sources */,
-				8FE398BA49F64B9897EA330F /* ImageTargetsViewController.mm in Sources */,
-				C7352C3B140149998542F2B4 /* ApplicationSession.h in Sources */,
-				7771FA41C13342238E372D59 /* ApplicationSession.mm in Sources */,
-				F4EB7797A9EA43BBAE31BB88 /* GLResourceHandler.h in Sources */,
+				74AF52BDB46C499092600FD4 /* CDVLogger.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -361,7 +361,7 @@
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEVELOPMENT_TEAM = 22DLAVVNDJ;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/LPM/plugins/cordova-plugin-vuforia-sdk/libs\"";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -371,10 +371,7 @@
 				INFOPLIST_FILE = "LPM/LPM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/LPM/plugins/cordova-plugin-vuforia-sdk/libs\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = LPM;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -394,7 +391,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = YES;
 				DEVELOPMENT_TEAM = 22DLAVVNDJ;
-				FRAMEWORK_SEARCH_PATHS = "\"$(SRCROOT)/LPM/plugins/cordova-plugin-vuforia-sdk/libs\"";
+				FRAMEWORK_SEARCH_PATHS = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "LPM/LPM-Prefix.pch";
 				GCC_THUMB_SUPPORT = NO;
@@ -402,10 +399,7 @@
 				INFOPLIST_FILE = "LPM/LPM-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "@executable_path/Frameworks";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/LPM/plugins/cordova-plugin-vuforia-sdk/libs\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				MACH_O_TYPE = mh_execute;
 				PRODUCT_NAME = LPM;
 				TARGETED_DEVICE_FAMILY = "1,2";

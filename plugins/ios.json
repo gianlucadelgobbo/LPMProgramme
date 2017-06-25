@@ -18,6 +18,13 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "lpm",
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
     "dependent_plugins": {}

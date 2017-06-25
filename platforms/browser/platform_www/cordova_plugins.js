@@ -58,7 +58,9 @@ module.exports.metadata =
     "cordova-plugin-whitelist": "1.2.1",
     "cordova-plugin-network-information": "1.2.0",
     "cordova-plugin-splashscreen": "3.2.1",
-    "cordova-plugin-statusbar": "2.2.3"
+    "cordova-plugin-statusbar": "2.2.3",
+    "cordova-plugin-console": "1.0.7",
+    "cordova-plugin-customurlscheme": "4.3.0"
 }
 // BOTTOM OF METADATA
 });

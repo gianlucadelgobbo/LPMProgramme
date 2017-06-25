@@ -23,6 +23,10 @@
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"LaunchMyApp\"><param name=\"android-package\" value=\"nl.xservices.plugins.LaunchMyApp\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
@@ -35,7 +39,17 @@
                             "count": 1
                         }
                     ],
-                    "/manifest/application": []
+                    "/manifest/application": [],
+                    "/manifest/application/activity": [
+                        {
+                            "xml": "<intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:scheme=\"lpm\" /></intent-filter>",
+                            "count": 1
+                        },
+                        {
+                            "xml": "<intent-filter><action android:name=\"android.intent.action.VIEW\" /><category android:name=\"android.intent.category.DEFAULT\" /><category android:name=\"android.intent.category.BROWSABLE\" /><data android:host=\" \" android:pathPrefix=\"/\" android:scheme=\" \" /></intent-filter>",
+                            "count": 1
+                        }
+                    ]
                 }
             },
             "res/values/strings.xml": {
@@ -56,6 +70,16 @@
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
         "cordova-plugin-whitelist": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-console": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "lpm",
+            "ANDROID_SCHEME": " ",
+            "ANDROID_HOST": " ",
+            "ANDROID_PATHPREFIX": "/",
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
@@ -99,12 +123,22 @@
             "file": "plugins/cordova-plugin-whitelist/whitelist.js",
             "pluginId": "cordova-plugin-whitelist",
             "runs": true
+        },
+        {
+            "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+            "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
+            "pluginId": "cordova-plugin-customurlscheme",
+            "clobbers": [
+                "window.plugins.launchmyapp"
+            ]
         }
     ],
     "plugin_metadata": {
         "cordova-plugin-network-information": "1.2.0",
         "cordova-plugin-splashscreen": "3.2.1",
         "cordova-plugin-statusbar": "2.2.3",
-        "cordova-plugin-whitelist": "1.2.1"
+        "cordova-plugin-whitelist": "1.2.1",
+        "cordova-plugin-console": "1.0.7",
+        "cordova-plugin-customurlscheme": "4.3.0"
     }
 }

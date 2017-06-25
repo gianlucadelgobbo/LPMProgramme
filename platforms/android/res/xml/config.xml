@@ -15,6 +15,9 @@
         <param name="android-package" value="org.apache.cordova.whitelist.WhitelistPlugin" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="LaunchMyApp">
+        <param name="android-package" value="nl.xservices.plugins.LaunchMyApp" />
+    </feature>
     <name>LPM</name>
     <description>
         LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.
@@ -51,8 +54,6 @@ http://liveperformersmeeting.net
     <allow-intent href="mailto:*" />
     <allow-intent href="geo:*" />
     <allow-intent href="market:*" />
-    <resource-file src="www/targets/CustomData.xml" target="assets/CustomData.xml" />
-    <resource-file src="www/targets/CustomData.dat" target="assets/CustomData.dat" />
     <icon density="ldpi" src="res/android/ldpi.png" />
     <icon density="mdpi" src="res/android/mdpi.png" />
     <icon density="hdpi" src="res/android/hdpi.png" />
