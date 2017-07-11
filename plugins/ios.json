@@ -7,17 +7,20 @@
         "files": {}
     },
     "installed_plugins": {
-        "cordova-plugin-network-information": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
-        "cordova-plugin-whitelist": {
+        "cordova-plugin-customurlscheme": {
+            "URL_SCHEME": "lpm",
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
-        "cordova-plugin-customurlscheme": {
-            "URL_SCHEME": "lpm",
+        "cordova-plugin-network-information": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },

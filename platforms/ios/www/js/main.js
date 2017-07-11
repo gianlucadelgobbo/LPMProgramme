@@ -2,19 +2,39 @@ var back = [];
 var mySvgPanZoom;
 var startupSez = "loadDaysList";
 var scroll = [0,0];
+var dataName = "eventdata";
+console.log("aaaa");
+
+var localVar = {
+    title: "LPM 2017 Amsterdam",
+    title_editions: "LPM Editions",
+    remoteFileURL: "https://flxer.net/api/app/lpm/",
+    protocol: "lpm://"
+}
 
 function startup (remoteFile) {
-    console.log("stocazzo");
+    //alert("startup "+dataName);
 	app.dataCnt = remoteFile;
-	if (typeof dataName !== 'undefined') localStorage.setItem(dataName, remoteFile);
-	$("#loadTwitter").bind('click', btn0);
+	//alert(JSON.stringify(app.dataCnt.editions));
+    window.localStorage.setItem(dataName, JSON.stringify(app.dataCnt));
+    $("#title_content").text(localVar.title);
+    $("#popover_title").text(localVar.title_editions);
+    $("#loadTwitter").bind('click', btn0);
 	$("#loadDaysList").bind('click', btn1);
 	$("#loadNowList").bind('click', btn2);
 	$("#loadArtistsList").bind('click', btn3);
 	$("#loadMap").bind('click', btn4);
 	$("header .icon-refresh").bind('click', reloadRemoteFile);
 	$("header .icon-left-nav").hide().bind('click', myBack);
-	setActive(startupSez);
+    content = "";
+    for (var a=0;a<app.dataCnt.editions.length;a++) {
+        content+= "<li class=\"table-view-cell\">";
+        content+= "		<a data-load=\""+localVar.remoteFileURL+"?edition="+app.dataCnt.editions[a].id+"\">"+app.dataCnt.editions[a].title+"</a>";
+        content+= "	</li>";
+    }
+    $("#popover_content").html(content);
+    $("#popover_content a").bind('click', loadEdition);
+    setActive(startupSez);
 	eval(startupSez+"()");
 }
 function btn0(){
@@ -41,7 +61,33 @@ function btn4(){
 	loadMap();
 }
 
-
+function handleOpenURL(url) {
+    setTimeout(function() {
+        var param = url.replace(localVar.protocol,"").split("#");
+        switch (param[0]) {
+            case "loadTwitter" :
+            case "loadDaysList" :
+            case "loadArtistsList" :
+            case "loadNowList" :
+            case "loadMap" :
+                eval(param[0]+"()");
+                break;
+            case "loadArtist" :
+               loadArtist({data:{login: param[1]}}); //lpm://loadArtist#eraxeg
+               break;
+            case "loadDailyList" :
+               event.data.day = param[1]; //lpm://loadDailyList#2017-05-18
+               loadDailyList({data:{day: param[1]}});
+               break;
+            case "loadPerf" :
+               loadPerf({data:{permalink: param[1]}});  //lpm://loadPerf#/lpm-team/performance/lpm-2017-amsterdam-kick-off/
+               break;
+            default :
+                break;
+        }
+        //alert("received url: " + param[0] + "/" + param[1]);
+    }, 0);
+}
 
 
 function setActive (id) {
@@ -174,9 +220,9 @@ function loadArtistsList(){
 	setActive("loadArtistsList");
 	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	var artists = [];
-	for (day in app.dataCnt.performances) {
-		for (perf in app.dataCnt.performances[day]) {
-			var p = app.dataCnt.performances[day][perf];
+	for (day in app.dataCnt.edition.performances) {
+		for (perf in app.dataCnt.edition.performances[day]) {
+			var p = app.dataCnt.edition.performances[day][perf];
 			for (performer in p.performers) {
 				artists[p.performers[performer].login] = p.performers[performer];
 			}
@@ -204,18 +250,18 @@ function loadArtistsList(){
 };
 
 function loadArtist(event){
-	$(".content" ).off( "scroll");
+    $(".content" ).off( "scroll");
 	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	//if (!login) var login = this.getAttribute("data-src");
 	var login = event.data.login;
 	var performances = [];
 	var artist;
-	for (day in app.dataCnt.performances) {
-		for (perf in app.dataCnt.performances[day]) {
-			for (performer in app.dataCnt.performances[day][perf].performers) {
-				if (login == app.dataCnt.performances[day][perf].performers[performer].login) {
-					artist = app.dataCnt.performances[day][perf].performers[performer];
-					performances[app.dataCnt.performances[day][perf].permalink] = app.dataCnt.performances[day][perf];
+	for (day in app.dataCnt.edition.performances) {
+		for (perf in app.dataCnt.edition.performances[day]) {
+			for (performer in app.dataCnt.edition.performances[day][perf].performers) {
+				if (login == app.dataCnt.edition.performances[day][perf].performers[performer].login) {
+					artist = app.dataCnt.edition.performances[day][perf].performers[performer];
+					performances[app.dataCnt.edition.performances[day][perf].permalink] = app.dataCnt.edition.performances[day][perf];
 				}
 			}
 		}
@@ -260,22 +306,22 @@ function loadNowList(){
 	var content = "<ul class=\"table-view\">";
 	content+= "<li class=\"table-view-cell table-view-divider\">"+formatDate(now, "full")+"</li>";
 	var lista = "";
-	for (perf in app.dataCnt.performances[day]) {
-		var perfTime = new Date(day.split("-")[0],day.split("-")[1]-1,day.split("-")[2],app.dataCnt.performances[day][perf].data_i.split(" ")[1].split(":")[0],app.dataCnt.performances[day][perf].data_i.split(" ")[1].split(":")[1]);
+	for (perf in app.dataCnt.edition.performances[day]) {
+		var perfTime = new Date(day.split("-")[0],day.split("-")[1]-1,day.split("-")[2],app.dataCnt.edition.performances[day][perf].data_i.split(" ")[1].split(":")[0],app.dataCnt.edition.performances[day][perf].data_i.split(" ")[1].split(":")[1]);
 		if (perfTime-now > -900000 && perfTime-now < 7200000) {
-			lista+= writePerfListItem(app.dataCnt.performances[day][perf]);
+			lista+= writePerfListItem(app.dataCnt.edition.performances[day][perf]);
 		}
 	}
 	var availabledays = [];
-	for (var d in app.dataCnt.performances) {
+	for (var d in app.dataCnt.edition.performances) {
 		if (d != "tobeconfirmed") availabledays.push(d);
 	}
 	if (lista == "") {
-		if (typeof app.dataCnt.performances[day]==='undefined') {
+		if (typeof app.dataCnt.edition.performances[day]==='undefined') {
 			if (new Date(day) > new Date(availabledays[availabledays.length-1])) {
-				lista+= "<li class=\"table-view-cell\"><b>"+app.dataCnt.titolo+"</b> closed the <b>"+formatDate(availabledays[0], "notime")+"</b>. See you at the next edition!!!</li>";
+				lista+= "<li class=\"table-view-cell\"><b>"+app.dataCnt.edition.titolo+"</b> closed the <b>"+formatDate(availabledays[0], "notime")+"</b>. See you at the next edition!!!</li>";
 			} else {
-				lista+= "<li class=\"table-view-cell\"><b>"+app.dataCnt.titolo+"</b> will start the <b>"+formatDate(availabledays[0], "notime")+"</b>. See you soon!!!</li>";
+				lista+= "<li class=\"table-view-cell\"><b>"+app.dataCnt.edition.titolo+"</b> will start the <b>"+formatDate(availabledays[0], "notime")+"</b>. See you soon!!!</li>";
 			}
 		} else {
 			lista+= "<li class=\"table-view-cell\">No ongoing from 15 minutes activities and nothing scheduled in the next 2 hours</li>";
@@ -285,8 +331,8 @@ function loadNowList(){
 	content+= "</ul>";
 	
 	$(".content").html(content);
-	for (perf in app.dataCnt.performances[day]) 
-		$("#"+app.dataCnt.performances[day][perf].permalink).bind('click', {permalink:"/"+app.dataCnt.performances[day][perf].performers[0].login+"/performance/"+app.dataCnt.performances[day][perf].permalink+"/"}, loadPerf);
+	for (perf in app.dataCnt.edition.performances[day]) 
+		$("#"+app.dataCnt.edition.performances[day][perf].permalink).bind('click', {permalink:"/"+app.dataCnt.edition.performances[day][perf].performers[0].login+"/performance/"+app.dataCnt.edition.performances[day][perf].permalink+"/"}, loadPerf);
 	if (back.length<2 || back[back.length-1].fnz != "loadNowList") back.push({fnz:"loadNowList",params:null});
 	$("header .icon-left-nav").show();
 };
@@ -297,7 +343,7 @@ function loadDaysList(){
 	var content = "<ul class=\"table-view\">";
 	content+= "<li class=\"table-view-cell table-view-divider\">Programme <small>Last update "+formatDate(app.dataCnt.lastUpdate, "full")+".</small> <small>Press <span class=\"icon icon-refresh icon-small\"></span> to update.</small></li>";
 	content+= "</ul>";
-	for (day in app.dataCnt.performances) {
+	for (day in app.dataCnt.edition.performances) {
 		if (day != "tobeconfirmed") {
 			content+= "	<div class=\"content-padded\">";
 			content+= "		<button class=\"btn btn-primary btn-block\" id=\""+day+"\">"+formatDate(day, "notime")+"</button>";
@@ -306,7 +352,7 @@ function loadDaysList(){
 	}
 	
 	$(".content").html(content);
-	for (day in app.dataCnt.performances) 
+	for (day in app.dataCnt.edition.performances) 
 		$("#"+day).bind('click', {day:day}, loadDailyList);
 	if (back.length<2 || back[back.length-1].fnz != "loadDaysList") back.push({fnz:"loadDaysList",params:null});
 	if (back.length>1) $("header .icon-left-nav").show();
@@ -315,7 +361,7 @@ function loadDaysList(){
 }
 
 function loadDailyList(event){
-	$(".content").scrollTop(scroll);
+    $(".content").scrollTop(scroll);
 	$(".content" ).on( "scroll", function() {
 		scroll = $(".content").scrollTop();
 	});
@@ -323,35 +369,35 @@ function loadDailyList(event){
 	var d = event.data.day;
 	var content = "<ul class=\"table-view\" data-back=\""+d+"\">";
 	content+= "<li class=\"table-view-cell table-view-divider\">"+formatDate(d, "notime")+"</li>";
-	for (day in app.dataCnt.performances) {
+	for (day in app.dataCnt.edition.performances) {
 		if (day == d) {
-			for (perf in app.dataCnt.performances[day]) {
-				content+= writePerfListItem(app.dataCnt.performances[day][perf]);
+			for (perf in app.dataCnt.edition.performances[day]) {
+				content+= writePerfListItem(app.dataCnt.edition.performances[day][perf]);
 			}
 		}
 	}
 	content+= "</ul>";
 	
 	$(".content").html(content);
-	for (day in app.dataCnt.performances) 
+	for (day in app.dataCnt.edition.performances) 
 		if (day == d) 
-			for (perf in app.dataCnt.performances[day]) 
-				$("#"+app.dataCnt.performances[day][perf].permalink).bind('click', {permalink:"/"+app.dataCnt.performances[day][perf].performers[0].login+"/performance/"+app.dataCnt.performances[day][perf].permalink+"/"}, loadPerf);
+			for (perf in app.dataCnt.edition.performances[day]) 
+				$("#"+app.dataCnt.edition.performances[day][perf].permalink).bind('click', {permalink:"/"+app.dataCnt.edition.performances[day][perf].performers[0].login+"/performance/"+app.dataCnt.edition.performances[day][perf].permalink+"/"}, loadPerf);
 	if (back.length<2 || back[back.length-1].fnz != "loadDailyList") back.push({fnz:"loadDailyList",params:event});
 	$("header .icon-left-nav").show();
 }
 function loadPerf(event){
-	$(".content" ).off( "scroll");
+    $(".content" ).off( "scroll");
 	$(".content").scrollTop(0);
 	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	var permalink = event.data.permalink;
 	var permalinkA = permalink.split("/");
 	var content = "";
 	var performance = {};
-	for (day in app.dataCnt.performances) {
-		for (perf in app.dataCnt.performances[day]) {
-			if (permalinkA[3] == app.dataCnt.performances[day][perf].permalink) {
-				performance[permalinkA[3]] = app.dataCnt.performances[day][perf];
+	for (day in app.dataCnt.edition.performances) {
+		for (perf in app.dataCnt.edition.performances[day]) {
+			if (permalinkA[3] == app.dataCnt.edition.performances[day][perf].permalink) {
+				performance[permalinkA[3]] = app.dataCnt.edition.performances[day][perf];
 			}
 		}
 	}
@@ -473,9 +519,23 @@ function formatDate (d, type) {
 	return str;
 }
 
+function loadEdition(){
+    //preventDefault();
+    localVar.remoteFileURL = $(this).data("load");
+    localVar.title = $(this).text();
+    var popovers = $('.popover');
+    $(popovers).removeClass('visible');
+    $(popovers).removeClass('active');
+    $(popovers).hide();
+    $("div.backdrop").remove();
+    reloadRemoteFile();
+}
+
 function reloadRemoteFile(){
 	loadDaysList();
-	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
+    var remoteFileURL = app.networkState == "No network connection" ? "data/data.json" : localVar.remoteFileURL;
+    var remoteFile = fetchRemoteFile(remoteFileURL, startup);
+    $(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	fetchRemoteFile(remoteFileURL, startup);
 }
 function urlify(text) {
@@ -501,7 +561,7 @@ function makeTextPlainToRich(str){
 }
 function fetchRemoteFile(path, callback) {
 	var returnValue = null;
-	console.log("Fetching now!");
+	//console.log("Fetching now!");
 	$.ajax({
 		url: path,
 		async: true,
@@ -509,8 +569,8 @@ function fetchRemoteFile(path, callback) {
 		type: "GET",
 		cache: false,
 		success: function (response) {
-			console.log("Function: fetchRemoteFile(" + path + "), success.");
-			console.log(response);
+			//console.log("Function: fetchRemoteFile(" + path + "), success.");
+			//console.log(response);
 			returnValue = response;
 			callback(response);
 		},

@@ -18,8 +18,6 @@ cordova.define("cordova-plugin-network-information.NetworkInfoProxy", function(r
  *
 */
 
-/*global module, require*/
-
 var cordova = require('cordova'),
     proxy = require("cordova/exec/proxy"),
     Connection = require('./Connection');

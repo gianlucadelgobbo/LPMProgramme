@@ -1,6 +1,20 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
+        "id": "cordova-plugin-whitelist.whitelist",
+        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
+        "pluginId": "cordova-plugin-whitelist",
+        "runs": true
+    },
+    {
+        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+        "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
+        "pluginId": "cordova-plugin-customurlscheme",
+        "clobbers": [
+            "window.plugins.launchmyapp"
+        ]
+    },
+    {
         "id": "cordova-plugin-network-information.network",
         "file": "plugins/cordova-plugin-network-information/www/network.js",
         "pluginId": "cordova-plugin-network-information",
@@ -18,27 +32,22 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-whitelist.whitelist",
-        "file": "plugins/cordova-plugin-whitelist/whitelist.js",
-        "pluginId": "cordova-plugin-whitelist",
-        "runs": true
-    },
-    {
-        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
-        "file": "plugins/cordova-plugin-customurlscheme/www/android/LaunchMyApp.js",
-        "pluginId": "cordova-plugin-customurlscheme",
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
         "clobbers": [
-            "window.plugins.launchmyapp"
+            "window.StatusBar"
         ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-network-information": "1.2.0",
     "cordova-plugin-whitelist": "1.2.1",
+    "cordova-plugin-customurlscheme": "4.3.0",
     "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-customurlscheme": "4.3.0"
+    "cordova-plugin-network-information": "1.3.3",
+    "cordova-plugin-statusbar": "2.2.3"
 };
 // BOTTOM OF METADATA
 });

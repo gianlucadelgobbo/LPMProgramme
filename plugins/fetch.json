@@ -7,28 +7,12 @@
         "is_top_level": true,
         "variables": {}
     },
-    "cordova-plugin-network-information": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-network-information"
-        },
-        "is_top_level": true,
-        "variables": {}
-    },
     "cordova-plugin-vuforia-sdk": {
         "source": {
             "type": "registry",
             "id": "cordova-plugin-vuforia-sdk@6.x.x"
         },
         "is_top_level": false,
-        "variables": {}
-    },
-    "cordova-plugin-console": {
-        "source": {
-            "type": "registry",
-            "id": "cordova-plugin-console"
-        },
-        "is_top_level": true,
         "variables": {}
     },
     "cordova-plugin-customurlscheme": {
@@ -40,5 +24,29 @@
         "variables": {
             "URL_SCHEME": "lpm"
         }
+    },
+    "cordova-plugin-console": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-console"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-network-information": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-network-information"
+        },
+        "is_top_level": true,
+        "variables": {}
+    },
+    "cordova-plugin-statusbar": {
+        "source": {
+            "type": "registry",
+            "id": "cordova-plugin-statusbar@2.2.3"
+        },
+        "is_top_level": true,
+        "variables": {}
     }
 }

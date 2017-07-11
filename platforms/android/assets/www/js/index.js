@@ -20,6 +20,7 @@ var app = {
 	networkState: 'No network connection',
 	// Application Constructor
 	initialize: function() {
+        alert("ababab");
 		this.bindEvents();
 	},
 	// Bind Event Listeners
@@ -52,6 +53,8 @@ var app = {
 	// The scope of 'this' is the event. In order to call the 'receivedEvent'
 	// function, we must explicitly call 'app.receivedEvent(...);'
 	onDeviceReady: function() {
+        console.log("StatusBar");
+        console.log(StatusBar);
 		app.receivedEvent('deviceready');
 		app.checkConnection();
 		app.syncData();
@@ -113,10 +116,3 @@ var app = {
 	}
 };
 app.initialize();
-alert("aaaa");
-
-ezar.initializeVideoOverlay(function(){ alert("bbbb");ezar.getBackCamera().start(); });
-
-
-
-

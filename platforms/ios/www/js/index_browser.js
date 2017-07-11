@@ -16,11 +16,11 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-var remoteFileURL = "https://flxer.net/api/lpm-team/events/lpm-2017-amsterdam/";
+
 var app = {
 	// Application Constructor
 	initialize: function() {
-		fetchRemoteFile(remoteFileURL, startup);
+        fetchRemoteFile(localVar.remoteFileURL, startup);
 	}
 };
 $(function() {

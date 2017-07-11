@@ -1,20 +1,11 @@
 cordova.define('cordova/plugin_list', function(require, exports, module) {
 module.exports = [
     {
-        "id": "cordova-plugin-network-information.network",
-        "file": "plugins/cordova-plugin-network-information/www/network.js",
-        "pluginId": "cordova-plugin-network-information",
+        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
+        "file": "plugins/cordova-plugin-customurlscheme/www/ios/LaunchMyApp.js",
+        "pluginId": "cordova-plugin-customurlscheme",
         "clobbers": [
-            "navigator.connection",
-            "navigator.network.connection"
-        ]
-    },
-    {
-        "id": "cordova-plugin-network-information.Connection",
-        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
-        "pluginId": "cordova-plugin-network-information",
-        "clobbers": [
-            "Connection"
+            "window.plugins.launchmyapp"
         ]
     },
     {
@@ -34,21 +25,39 @@ module.exports = [
         ]
     },
     {
-        "id": "cordova-plugin-customurlscheme.LaunchMyApp",
-        "file": "plugins/cordova-plugin-customurlscheme/www/ios/LaunchMyApp.js",
-        "pluginId": "cordova-plugin-customurlscheme",
+        "id": "cordova-plugin-network-information.network",
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "pluginId": "cordova-plugin-network-information",
         "clobbers": [
-            "window.plugins.launchmyapp"
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "id": "cordova-plugin-network-information.Connection",
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "pluginId": "cordova-plugin-network-information",
+        "clobbers": [
+            "Connection"
+        ]
+    },
+    {
+        "id": "cordova-plugin-statusbar.statusbar",
+        "file": "plugins/cordova-plugin-statusbar/www/statusbar.js",
+        "pluginId": "cordova-plugin-statusbar",
+        "clobbers": [
+            "window.StatusBar"
         ]
     }
 ];
 module.exports.metadata = 
 // TOP OF METADATA
 {
-    "cordova-plugin-network-information": "1.2.0",
     "cordova-plugin-whitelist": "1.2.1",
+    "cordova-plugin-customurlscheme": "4.3.0",
     "cordova-plugin-console": "1.0.7",
-    "cordova-plugin-customurlscheme": "4.3.0"
+    "cordova-plugin-network-information": "1.3.3",
+    "cordova-plugin-statusbar": "2.2.3"
 };
 // BOTTOM OF METADATA
 });
