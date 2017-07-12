@@ -14,6 +14,9 @@
         <param name="android-package" value="org.apache.cordova.statusbar.StatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="BarcodeScanner">
+        <param name="android-package" value="com.phonegap.plugins.barcodescanner.BarcodeScanner" />
+    </feature>
     <name>LPM</name>
     <description>
         LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.

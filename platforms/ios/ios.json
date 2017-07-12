@@ -27,13 +27,22 @@
                         {
                             "xml": "<preference name=\"StatusBarStyle\" value=\"lightcontent\" />",
                             "count": 1
+                        },
+                        {
+                            "xml": "<feature name=\"BarcodeScanner\"><param name=\"ios-package\" value=\"CDVBarcodeScanner\" /></feature>",
+                            "count": 1
                         }
                     ]
                 }
             },
             "*-Info.plist": {
                 "parents": {
-                    "NSCameraUsageDescription": [],
+                    "NSCameraUsageDescription": [
+                        {
+                            "xml": "<string>To scan QRcodes</string>",
+                            "count": 1
+                        }
+                    ],
                     "CFBundleURLTypes": [
                         {
                             "xml": "<array><dict><key>CFBundleURLSchemes</key><array><string>lpm</string></array></dict></array>",
@@ -59,6 +68,10 @@
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         },
         "cordova-plugin-statusbar": {
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": "To scan QRcodes",
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
@@ -112,6 +125,14 @@
             "clobbers": [
                 "window.StatusBar"
             ]
+        },
+        {
+            "id": "phonegap-plugin-barcodescanner.BarcodeScanner",
+            "file": "plugins/phonegap-plugin-barcodescanner/www/barcodescanner.js",
+            "pluginId": "phonegap-plugin-barcodescanner",
+            "clobbers": [
+                "cordova.plugins.barcodeScanner"
+            ]
         }
     ],
     "plugin_metadata": {
@@ -119,6 +140,7 @@
         "cordova-plugin-customurlscheme": "4.3.0",
         "cordova-plugin-console": "1.0.7",
         "cordova-plugin-network-information": "1.3.3",
-        "cordova-plugin-statusbar": "2.2.3"
+        "cordova-plugin-statusbar": "2.2.3",
+        "phonegap-plugin-barcodescanner": "6.0.6"
     }
 }

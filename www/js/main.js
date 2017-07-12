@@ -6,34 +6,63 @@ var dataName = "eventdata";
 console.log("aaaa");
 
 var localVar = {
-    title: "LPM",
+    title: "LPM 2017 Amsterdam",
+    title_editions: "LPM Editions",
     remoteFileURL: "https://flxer.net/api/app/lpm/",
     protocol: "lpm://"
 }
 
 function startup (remoteFile) {
-    alert("startup "+dataName);
+    //alert("startup "+dataName);
 	app.dataCnt = remoteFile;
-	alert(JSON.stringify(app.dataCnt.editions));
+	//alert(JSON.stringify(app.dataCnt.editions));
     window.localStorage.setItem(dataName, JSON.stringify(app.dataCnt));
     $("#title_content").text(localVar.title);
-    $("#popover_title").text(localVar.title+" Editions");
+    $("#popover_title").text(localVar.title_editions);
     $("#loadTwitter").bind('click', btn0);
 	$("#loadDaysList").bind('click', btn1);
-	$("#loadNowList").bind('click', btn2);
+	$("#loadScan").bind('click', btn2);
 	$("#loadArtistsList").bind('click', btn3);
 	$("#loadMap").bind('click', btn4);
 	$("header .icon-refresh").bind('click', reloadRemoteFile);
 	$("header .icon-left-nav").hide().bind('click', myBack);
     content = "";
     for (var a=0;a<app.dataCnt.editions.length;a++) {
-            content+= "<li class=\"table-view-cell\">";
-            content+= "		<a href=\""+app.dataCnt.editions[a].url+"\">"+app.dataCnt.editions[a].title+"</a>";
-            content+= "	</li>";
+        content+= "<li class=\"table-view-cell\">";
+        content+= "		<a data-load=\""+localVar.remoteFileURL+"?edition="+app.dataCnt.editions[a].id+"\">"+app.dataCnt.editions[a].title+"</a>";
+        content+= "	</li>";
     }
     $("#popover_content").html(content);
+    $("#popover_content a").bind('click', loadEdition);
     setActive(startupSez);
 	eval(startupSez+"()");
+}
+function loadScan(){
+    console.log("clicked");
+    //$("body").html("");
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        },
+        {
+            preferFrontCamera : true, // iOS and Android
+            showFlipCameraButton : true, // iOS and Android
+            showTorchButton : true, // iOS and Android
+            torchOn: true, // Android, launch with the torch switched on (if available)
+            prompt : "Place a barcode inside the scan area", // Android
+            resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+            formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+            orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+            disableAnimations : true, // iOS
+            disableSuccessBeep: false // iOS
+        }
+    );
 }
 function btn0(){
 	scroll = [0,0];
@@ -46,7 +75,7 @@ function btn1(){
 
 function btn2(){
 	scroll = [0,0];
-	loadNowList();
+	loadScan();
 }
 
 function btn3(){
@@ -66,7 +95,7 @@ function handleOpenURL(url) {
             case "loadTwitter" :
             case "loadDaysList" :
             case "loadArtistsList" :
-            case "loadNowList" :
+            case "loadScan" :
             case "loadMap" :
                 eval(param[0]+"()");
                 break;
@@ -91,7 +120,7 @@ function handleOpenURL(url) {
 function setActive (id) {
 	$("#loadTwitter").removeClass('active');
 	$("#loadDaysList").removeClass('active');
-	$("#loadNowList").removeClass('active');
+	$("#loadScan").removeClass('active');
 	$("#loadArtistsList").removeClass('active');
 	$("#loadMap").removeClass('active');
 	$("#"+id).addClass('active');
@@ -248,8 +277,6 @@ function loadArtistsList(){
 };
 
 function loadArtist(event){
-    console.log("loadArtist");
-    console.log(event.data.login);
     $(".content" ).off( "scroll");
 	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	//if (!login) var login = this.getAttribute("data-src");
@@ -350,10 +377,14 @@ function loadDaysList(){
 			content+= "	</div>";
 		}
 	}
+    content+= "	<div class=\"content-padded\">";
+    content+= "		<button class=\"btn btn-negative btn-block\" id=\"loadNowList\">NOW</button>";
+    content+= "	</div>";
 	
 	$(".content").html(content);
 	for (day in app.dataCnt.edition.performances) 
 		$("#"+day).bind('click', {day:day}, loadDailyList);
+    $("#loadNowList").bind('click', loadNowList);
 	if (back.length<2 || back[back.length-1].fnz != "loadDaysList") back.push({fnz:"loadDaysList",params:null});
 	if (back.length>1) $("header .icon-left-nav").show();
 	scroll = 0;
@@ -361,8 +392,6 @@ function loadDaysList(){
 }
 
 function loadDailyList(event){
-    console.log("loadDailyList");
-    console.log(event.data.day);
     $(".content").scrollTop(scroll);
 	$(".content" ).on( "scroll", function() {
 		scroll = $(".content").scrollTop();
@@ -389,8 +418,6 @@ function loadDailyList(event){
 	$("header .icon-left-nav").show();
 }
 function loadPerf(event){
-    console.log("loadPerf");
-    console.log(event.data.permalink);
     $(".content" ).off( "scroll");
 	$(".content").scrollTop(0);
 	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
@@ -523,9 +550,23 @@ function formatDate (d, type) {
 	return str;
 }
 
+function loadEdition(){
+    //preventDefault();
+    localVar.remoteFileURL = $(this).data("load");
+    localVar.title = $(this).text();
+    var popovers = $('.popover');
+    $(popovers).removeClass('visible');
+    $(popovers).removeClass('active');
+    $(popovers).hide();
+    $("div.backdrop").remove();
+    reloadRemoteFile();
+}
+
 function reloadRemoteFile(){
 	loadDaysList();
-	$(".content").html("<div class=\"content-padded\">Loading data...</div>");
+    var remoteFileURL = app.networkState == "No network connection" ? "data/data.json" : localVar.remoteFileURL;
+    var remoteFile = fetchRemoteFile(remoteFileURL, startup);
+    $(".content").html("<div class=\"content-padded\">Loading data...</div>");
 	fetchRemoteFile(remoteFileURL, startup);
 }
 function urlify(text) {
@@ -551,7 +592,7 @@ function makeTextPlainToRich(str){
 }
 function fetchRemoteFile(path, callback) {
 	var returnValue = null;
-	console.log("Fetching now!");
+	//console.log("Fetching now!");
 	$.ajax({
 		url: path,
 		async: true,
@@ -559,8 +600,8 @@ function fetchRemoteFile(path, callback) {
 		type: "GET",
 		cache: false,
 		success: function (response) {
-			console.log("Function: fetchRemoteFile(" + path + "), success.");
-			console.log(response);
+			//console.log("Function: fetchRemoteFile(" + path + "), success.");
+			//console.log(response);
 			returnValue = response;
 			callback(response);
 		},

@@ -25,6 +25,9 @@
         <param name="ios-package" value="CDVStatusBar" />
         <param name="onload" value="true" />
     </feature>
+    <feature name="BarcodeScanner">
+        <param name="ios-package" value="CDVBarcodeScanner" />
+    </feature>
     <name>LPM</name>
     <description>
         LPM App let the guest of LPM to be fully informed on all the activities during the event showing the full programme by day, by Artists name, by Twitter updates, by a Now function that show what is started from not less the 15 minutes to the next 2 hours.
@@ -102,6 +105,6 @@ http://liveperformersmeeting.net
     <preference name="PaginationBreakingMode" value="page" />
     <preference name="PaginationMode" value="unpaginated" />
     <preference name="StatusBarOverlaysWebView" value="false" />
-    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarBackgroundColor" value="#0000FF" />
     <preference name="StatusBarStyle" value="lightcontent" />
 </widget>

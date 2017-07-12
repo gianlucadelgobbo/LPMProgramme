@@ -21,7 +21,7 @@ function startup (remoteFile) {
     $("#popover_title").text(localVar.title_editions);
     $("#loadTwitter").bind('click', btn0);
 	$("#loadDaysList").bind('click', btn1);
-	$("#loadNowList").bind('click', btn2);
+	$("#loadScan").bind('click', btn2);
 	$("#loadArtistsList").bind('click', btn3);
 	$("#loadMap").bind('click', btn4);
 	$("header .icon-refresh").bind('click', reloadRemoteFile);
@@ -37,6 +37,33 @@ function startup (remoteFile) {
     setActive(startupSez);
 	eval(startupSez+"()");
 }
+function loadScan(){
+    console.log("clicked");
+    //$("body").html("");
+    cordova.plugins.barcodeScanner.scan(
+        function (result) {
+            alert("We got a barcode\n" +
+                "Result: " + result.text + "\n" +
+                "Format: " + result.format + "\n" +
+                "Cancelled: " + result.cancelled);
+        },
+        function (error) {
+            alert("Scanning failed: " + error);
+        },
+        {
+            preferFrontCamera : true, // iOS and Android
+            showFlipCameraButton : true, // iOS and Android
+            showTorchButton : true, // iOS and Android
+            torchOn: true, // Android, launch with the torch switched on (if available)
+            prompt : "Place a barcode inside the scan area", // Android
+            resultDisplayDuration: 500, // Android, display scanned text for X ms. 0 suppresses it entirely, default 1500
+            formats : "QR_CODE,PDF_417", // default: all but PDF_417 and RSS_EXPANDED
+            orientation : "landscape", // Android only (portrait|landscape), default unset so it rotates with the device
+            disableAnimations : true, // iOS
+            disableSuccessBeep: false // iOS
+        }
+    );
+}
 function btn0(){
 	scroll = [0,0];
 	loadTwitter();
@@ -48,7 +75,7 @@ function btn1(){
 
 function btn2(){
 	scroll = [0,0];
-	loadNowList();
+	loadScan();
 }
 
 function btn3(){
@@ -68,7 +95,7 @@ function handleOpenURL(url) {
             case "loadTwitter" :
             case "loadDaysList" :
             case "loadArtistsList" :
-            case "loadNowList" :
+            case "loadScan" :
             case "loadMap" :
                 eval(param[0]+"()");
                 break;
@@ -93,7 +120,7 @@ function handleOpenURL(url) {
 function setActive (id) {
 	$("#loadTwitter").removeClass('active');
 	$("#loadDaysList").removeClass('active');
-	$("#loadNowList").removeClass('active');
+	$("#loadScan").removeClass('active');
 	$("#loadArtistsList").removeClass('active');
 	$("#loadMap").removeClass('active');
 	$("#"+id).addClass('active');
@@ -350,10 +377,14 @@ function loadDaysList(){
 			content+= "	</div>";
 		}
 	}
+    content+= "	<div class=\"content-padded\">";
+    content+= "		<button class=\"btn btn-negative btn-block\" id=\"loadNowList\">NOW</button>";
+    content+= "	</div>";
 	
 	$(".content").html(content);
 	for (day in app.dataCnt.edition.performances) 
 		$("#"+day).bind('click', {day:day}, loadDailyList);
+    $("#loadNowList").bind('click', loadNowList);
 	if (back.length<2 || back[back.length-1].fnz != "loadDaysList") back.push({fnz:"loadDaysList",params:null});
 	if (back.length>1) $("header .icon-left-nav").show();
 	scroll = 0;

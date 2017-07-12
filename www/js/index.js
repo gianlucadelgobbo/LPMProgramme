@@ -77,8 +77,8 @@ var app = {
 
 		// fetch the file from the local cache
 		app.dataCnt = JSON.parse(window.localStorage.getItem(dataName));
-        alert("localStorage "+dataName);
-        alert(JSON.stringify(app.dataCnt));
+        //alert("localStorage "+dataName);
+        //alert(JSON.stringify(app.dataCnt));
         //app.dataCnt = null;
 		//app.networkState = "No network connection";
 
@@ -86,7 +86,7 @@ var app = {
 		if (app.dataCnt === null || app.dataCnt === "null" || app.dataCnt === undefined || app.dataCnt === "undefined") {
             
 			var remoteFileURL = app.networkState == "No network connection" ? "data/data.json" : localVar.remoteFileURL;
-			 alert("syncData"+remoteFileURL);
+			//alert("syncData"+remoteFileURL);
             // nope - file doesn"t exist, so fetch it remotely (synchronously)
 			var remoteFile = fetchRemoteFile(remoteFileURL, startup);
 

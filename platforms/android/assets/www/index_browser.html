@@ -38,11 +38,31 @@
 		<title>LPM</title>
 	</head>
 	<body>
-		<header class="bar bar-nav">
-			<a class="icon icon-left-nav pull-left" style="display:none;"></a>
-			<a class="icon icon-refresh pull-right"></a>
-			<h1 class="title">LPM</h1>
-		</header>
+        <div id="myPopover" class="popover">
+            <header class="bar bar-nav">
+                <h1 class="title" id="popover_title">popover_title</h1>
+            </header>
+            <ul class="table-view" id="popover_content">
+                <li class="table-view-cell">Item1</li>
+                <li class="table-view-cell">Item2</li>
+                <li class="table-view-cell">Item3</li>
+                <li class="table-view-cell">Item4</li>
+                <li class="table-view-cell">Item5</li>
+                <li class="table-view-cell">Item6</li>
+                <li class="table-view-cell">Item7</li>
+                <li class="table-view-cell">Item8</li>
+            </ul>
+        </div>
+        <header class="bar bar-nav">
+            <a class="icon icon-left-nav pull-left" style="display:none;"></a>
+            <a class="icon icon-refresh pull-right"></a>
+            <a href="#myPopover">
+                <h1 class="title">
+                    <span id="title_content">title_content</span>
+                    <span class="icon icon-caret"></span>
+                </h1>
+            </a>
+        </header>
 		<div class="content">
 			<div class="content-padded">Loading data...</div>
 		</div>

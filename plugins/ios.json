@@ -22,6 +22,10 @@
         },
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "net.liveperformersmeeting.m"
+        },
+        "phonegap-plugin-barcodescanner": {
+            "CAMERA_USAGE_DESCRIPTION": "To scan QRcodes",
+            "PACKAGE_NAME": "net.liveperformersmeeting.m"
         }
     },
     "dependent_plugins": {}
