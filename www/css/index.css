@@ -1,3 +1,25 @@
+.header-image {
+    background-size: cover;
+    background-position: 50%;
+    display: flex;
+}    /*
+     content: '';
+     z-index: -1;
+     display: block;
+     position: absolute;
+     width: 100%;
+     height: 100%;
+     -webkit-filter: blur(5px);
+    -moz-filter: blur(5px);
+    -o-filter: blur(5px);
+    -ms-filter: blur(5px);
+    filter: blur(5px);
+
+}
+.header-image {
+    display: grid;
+     */
+}
 .icon-left:before {
   content: '\e822';
 }
@@ -38,7 +60,6 @@
     content: "\e90b";
 }
 
-
 .panzoomcnt{
 	height:100%;
 	width:100%;
@@ -59,6 +80,7 @@
 }
 .img-responsive {
     max-width: 100%;
+    display: inline-block;
 }
 .table-view-cell small{
 	white-space: nowrap;

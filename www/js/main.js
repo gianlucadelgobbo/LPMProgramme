@@ -9,7 +9,8 @@ var localVar = {
     title: "LPM 2017 Amsterdam",
     title_editions: "LPM Editions",
     remoteFileURL: "https://flxer.net/api/app/lpm/",
-    protocol: "lpm://"
+    protocol: "lpm://",
+    formatfolder: "400x300"
 }
 
 function startup (remoteFile) {
@@ -298,9 +299,20 @@ function loadArtist(event){
 		if (countries.indexOf(artist.locations[l].country)===-1) countries.push(artist.locations[l].country);
 	}
 	countries.sort();
-	var content = "<div class=\"content-padded\">";
+	var content = "";
+    if (app.networkState != "No network connection") {
+        content+= "<div class=\"header-image\">";
+        content+= "<img class=\"img-responsive\" src=\"https://flxer.net"+artist.avatar.replace("90x68",localVar.formatfolder)+"\" alt=\""+artist.nomearte+"\" />";
+        content+= "</div>";
+        content+= "<style>";
+        content+= ".header-image {";
+        content+= "    background-image: linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.6)), url('https://flxer.net"+artist.avatar.replace("90x68",localVar.formatfolder)+"');";
+        content+= "}";
+        content+= "</style>";        
+    }
+    content+= "<div class=\"content-padded\">";
 	content+= "<h1>"+artist.nomearte+"</h1>";
-	content+= "<p><span class=\"icon icon-earth icon-small\"></span> "+countries.join(", ")+"</p>";
+    content+= "<p><span class=\"icon icon-earth icon-small\"></span> "+countries.join(", ")+"</p>";
 	content+= "<p><span class=\"icon icon-link icon-small\"></span> <a href=\"https://flxer.net/"+artist.login+"/\">flxer.net/"+artist.login+"</a></p>";
 	if (artist.websites) {
 		//content+= "<ul>";
@@ -432,7 +444,18 @@ function loadPerf(event){
 			}
 		}
 	}
-	content+= "<div class=\"content-padded\">";
+    if (app.networkState != "No network connection") {
+        content+= "<div class=\"header-image\">";
+        content+= "<img class=\"img-responsive\" src=\"https://flxer.net"+performance[permalinkA[3]].img_arr.replace("90x68",localVar.formatfolder)+"\" alt=\""+performance[permalinkA[3]].titolo+"\" />";
+        content+= "</div>";
+        content+= "<style>";
+        content+= ".header-image {";
+        content+= "    background-image: linear-gradient(rgba(255,255,255,.6),rgba(255,255,255,.6)), url('https://flxer.net"+performance[permalinkA[3]].img_arr.replace("90x68",localVar.formatfolder)+"');";
+        content+= "}";
+        content+= "</style>";
+
+    }
+    content+= "<div class=\"content-padded\">";
 	content+= "			<span class=\"superscript\">";
 	content+= getSchedule(performance[permalinkA[3]].data_i,performance[permalinkA[3]].data_f);
 	content+= "			</span>";
@@ -446,7 +469,27 @@ function loadPerf(event){
 	content+= "<p>"+makeTextPlainToRich(performance[permalinkA[3]].testo.en)+"</p>";
 	//content+= "<p>Room: "+performance[permalinkA[3]].room+""+(" | "+formatDate(performance[permalinkA[3]].data_i, "full"))+"</p>";
 	content+= "</div>";
-	for (performer in performance[permalinkA[3]].performers) {
+	for (var gallery in performance[permalinkA[3]].gallery) {
+        if (performance[permalinkA[3]].gallery[gallery].gallery_dett.length) {
+            for (var gallery_dett in performance[permalinkA[3]].gallery[gallery].gallery_dett) {
+                if (performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].type=="video") {
+                    content+= "<div class=\"gallery-cnt gallery-cnt-video\">";
+                    content+= "<a href=\"https://flxer.net/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].folder+"/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].name+"\">";
+                    content+= "<img class=\"img-responsive\" src=\"https://flxer.net/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].preview_file+"\" alt=\""+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].titolo+"\" />";
+                    content+= "</a>";
+                    content+= "</div>";
+                }
+                if (performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].type=="img") {
+                    content+= "<div class=\"gallery-cnt gallery-cnt-video\">";
+                    content+= "<a href=\"https://flxer.net/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].folder+"/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].name+"\">";
+                    content+= "<img class=\"img-responsive\" src=\"https://flxer.net/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].folder+"/"+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].name+"\" alt=\""+performance[permalinkA[3]].gallery[gallery].gallery_dett[gallery_dett].titolo+"\" />";
+                    content+= "</a>";
+                    content+= "</div>";
+                }
+            }
+        }
+	}
+	for (var performer in performance[permalinkA[3]].performers) {
 		content+= "<ul class=\"table-view\">";
 		content+= "<li class=\"table-view-cell table-view-divider\">Authors</li>";
 		for (artist in performance[permalinkA[3]].performers) {

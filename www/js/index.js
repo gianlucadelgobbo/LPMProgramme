@@ -63,6 +63,7 @@ var app = {
 	},
 	onOffline: function() {
 		app.checkConnection();
+        $("img-responsive").hide();
 		console.log("onOffline");
 	},
 	onOnline: function() {
