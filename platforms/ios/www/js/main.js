@@ -7,6 +7,7 @@ console.log("aaaa");
 
 var localVar = {
     title: "LPM 2017 Amsterdam",
+    permalink: "2017-amsterdam",
     title_editions: "LPM Editions",
     remoteFileURL: "https://flxer.net/api/app/lpm/",
     protocol: "lpm://",
@@ -91,6 +92,7 @@ function btn4(){
 
 function handleOpenURL(url) {
     setTimeout(function() {
+               alert(url);
         var param = url.replace(localVar.protocol,"").split("#");
         switch (param[0]) {
             case "loadTwitter" :
@@ -101,14 +103,21 @@ function handleOpenURL(url) {
                 eval(param[0]+"()");
                 break;
             case "loadArtist" :
-               loadArtist({data:{login: param[1]}}); //lpm://loadArtist#eraxeg
+               var artistA = param[1].split("/");
+               if (artistA[2]== localVar.permalink) {
+                    loadArtist({data:{login: artistA[4]}}); //lpm://loadArtist#/editions/2017-amsterdam/artists/20billioneyes/
+               }
                break;
             case "loadDailyList" :
                event.data.day = param[1]; //lpm://loadDailyList#2017-05-18
                loadDailyList({data:{day: param[1]}});
                break;
             case "loadPerf" :
-               loadPerf({data:{permalink: param[1]}});  //lpm://loadPerf#/lpm-team/performance/lpm-2017-amsterdam-kick-off/
+               var artistA = param[1].split("/");
+               if (artistA[2]== localVar.permalink) {
+                    loadPerf({data:{permalink: param[1].split("/artists")[1]}});  //lpm://loadPerf#/editions/2017-amsterdam/artists/lpm-team/performances/lpm-2017-amsterdam-kick-off/
+               }
+               
                break;
             default :
                 break;
